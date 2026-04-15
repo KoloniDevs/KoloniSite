@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Koloni: Nüfus | Hayatta Kal, Büyü</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Custom Colors/Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mars: {
+                            400: '#ff7b54',
+                            500: '#ff5722',
+                            600: '#e64a19',
+                            900: '#3e160a',
+                        },
+                        space: {
+                            900: '#0b0c10',
+                            800: '#1f2833',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #050508;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 87, 34, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 255, 255, 0.05), transparent 25%);
+            color: #f8fafc;
+        }
+        
+        .glass-card {
+            background: rgba(31, 40, 51, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mars-planet {
+            background: radial-gradient(circle at 30% 30%, #ff7b54, #cc4400, #5c1a06);
+            box-shadow: 
+                0 0 60px rgba(255, 87, 34, 0.4),
+                inset -20px -20px 40px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-mars-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-card border-b-0 border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full mars-planet"></div>
+                    <span class="font-display font-bold text-xl tracking-tight">KOLONİ<span class="text-mars-500">.</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-center space-x-8 text-sm font-medium text-slate-300">
+                        <a href="#ozellikler" class="hover:text-white transition-colors">Özellikler</a>
+                        <a href="#nasil-oynanir" class="hover:text-white transition-colors">Nasıl Oynanır?</a>
+                        <a href="#indir" class="bg-mars-500 hover:bg-mars-400 text-white px-5 py-2.5 rounded-full transition-all shadow-[0_0_15px_rgba(255,87,34,0.3)]">Hemen İndir</a>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button class="text-slate-300 hover:text-white">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <!-- Text Content -->
+                <div class="flex-1 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-mars-400 text-sm font-medium mb-6">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>Sürüm 1.0 Yayında</span>
+                    </div>
+                    <h1 class="font-display text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                        Kızıl Gezegende <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-mars-400 to-orange-600">
+                            Hayatta Kal.
+                        </span>
+                    </h1>
+                    <p class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Tarihin en hafif simülasyon oyunuyla tanışın. Enerji, oksijen ve su dengesini kurun, maden toplayın ve koloninizi felaketten koruyun. Cihazınızı asla yormaz, bataryanızı sömürmez.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                        <a href="#indir" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-mars-500 hover:bg-mars-400 text-white px-8 py-4 rounded-2xl font-semibold transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,87,34,0.4)]">
+                            <i data-lucide="download" class="w-5 h-5"></i>
+                            Oyunu İndir (APK)
+                        </a>
+                        <a href="#ozellikler" class="w-full sm:w-auto flex items-center justify-center gap-2 glass-card hover:bg-white/10 text-white px-8 py-4 rounded-2xl font-semibold transition-all">
+                            Daha Fazla Bilgi
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual Content (Mars Floating) -->
+                <div class="flex-1 relative w-full max-w-lg aspect-square flex items-center justify-center animate-float">
+                    <!-- Background Glow -->
+                    <div class="absolute inset-0 bg-mars-500/20 blur-[100px] rounded-full animate-pulse-slow"></div>
+                    
+                    <!-- The Planet -->
+                    <div class="w-64 h-64 md:w-96 md:h-96 rounded-full mars-planet relative z-10 flex items-center justify-center">
+                        <!-- Orbit Rings -->
+                        <div class="absolute w-[140%] h-[140%] border border-white/5 rounded-full"></div>
+                        <div class="absolute w-[180%] h-[180%] border border-white/5 rounded-full rotate-45"></div>
+                    </div>
+
+                    <!-- Floating UI Elements -->
+                    <div class="absolute top-10 -left-4 md:-left-10 glass-card px-4 py-3 rounded-xl flex items-center gap-3 z-20 shadow-xl">
+                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+                            <i data-lucide="droplets" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-400">Su Rezervi</div>
+                            <div class="font-bold text-white">%100 Stabil</div>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-10 -right-4 md:-right-10 glass-card px-4 py-3 rounded-xl flex items-center gap-3 z-20 shadow-xl">
+                        <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-400">Enerji</div>
+                            <div class="font-bold text-white">Yükseliyor</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="ozellikler" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-5xl font-bold mb-4">Neden Oynamalısın?</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Sıradan oyunları unutun. "Nüfus" tamamen kaynak yönetimine ve stratejiye dayalı, saf bir simülasyon deneyimidir.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-mars-500/20 text-mars-400 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="cpu" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Sıfır Kasıntı, Saf Kod</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Ağır 3D motorlar veya devasa resim dosyaları kullanılmadı. Tamamen matematiksel çizimler ve saf Java sayesinde en eski cihazlarda bile 60 FPS akar.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 blur-[50px]"></div>
+                    <div class="w-14 h-14 bg-cyan-500/20 text-cyan-400 rounded-2xl flex items-center justify-center mb-6 relative z-10">
+                        <i data-lucide="activity" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white relative z-10">Stratejik Derinlik</h3>
+                    <p class="text-slate-400 leading-relaxed relative z-10">
+                        Güneş panelleri, O2 jeneratörleri ve su sondajlarını dengeli kurun. Nüfus arttıkça tüketim artar; tek bir yanlış yatırım koloninin sonunu getirebilir.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="infinity" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Sonsuz Döngü</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Oyunun sonu yok! Amacınız koloniyi hayatta tutabildiğiniz kadar uzun süre ayakta tutmak. Günde sadece 10 dakika ayırarak rekorunuzu kırın.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game UI Preview Section -->
+    <section class="py-24 border-t border-white/5 bg-space-800/20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Mockup -->
+                <div class="w-full lg:w-1/2 flex justify-center">
+                    <div class="relative w-[300px] h-[600px] border-[8px] border-slate-800 rounded-[3rem] bg-[#1a0f14] overflow-hidden shadow-2xl flex flex-col p-4">
+                        <!-- Top Bar -->
+                        <div class="flex justify-between text-white mb-6">
+                            <span class="text-sm font-medium">Gün: 42</span>
+                            <span class="text-sm font-medium">Nüfus: 154</span>
+                        </div>
+                        <!-- Resources -->
+                        <div class="space-y-4 mb-8">
+                            <div>
+                                <div class="text-xs text-slate-400 mb-1">Enerji</div>
+                                <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="w-[85%] h-full bg-yellow-400"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 mb-1">Oksijen</div>
+                                <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="w-[60%] h-full bg-white"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 mb-1">Su</div>
+                                <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="w-[40%] h-full bg-cyan-400"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Center Planet Clicker -->
+                        <div class="flex-1 flex flex-col items-center justify-center relative cursor-pointer group">
+                            <div class="absolute inset-0 bg-[#cc4400]/20 blur-[50px] rounded-full"></div>
+                            <div class="w-48 h-48 rounded-full bg-[#cc4400] flex items-center justify-center relative z-10 transition-transform group-hover:scale-95 group-active:scale-90 shadow-[inset_-10px_-10px_20px_rgba(0,0,0,0.4)]">
+                                <span class="text-white font-bold text-lg">MADDE TOPLA</span>
+                            </div>
+                        </div>
+                        <!-- Bottom Upgrades -->
+                        <div class="grid grid-cols-3 gap-2 mt-auto">
+                            <div class="bg-white/10 p-2 rounded-xl text-center">
+                                <div class="text-yellow-400 text-xs font-bold mb-1">Enerji</div>
+                                <div class="text-white text-[10px]">Lvl: 4</div>
+                            </div>
+                            <div class="bg-white/10 p-2 rounded-xl text-center">
+                                <div class="text-white text-xs font-bold mb-1">O2</div>
+                                <div class="text-white text-[10px]">Lvl: 3</div>
+                            </div>
+                            <div class="bg-white/10 p-2 rounded-xl text-center">
+                                <div class="text-cyan-400 text-xs font-bold mb-1">Su</div>
+                                <div class="text-white text-[10px]">Lvl: 5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text -->
+                <div class="w-full lg:w-1/2">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Minimalist Arayüz,<br>Maksimum Strateji</h2>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        Karmaşık menülerde kaybolmaya son. Oyundaki tek göreviniz gezegene dokunarak madde toplamak ve bu maddeyi doğru kaynak tesislerine yatırmak. 
+                        Nüfusunuz sizinle yaşar, sizinle ölür.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-slate-300">
+                            <i data-lucide="check-circle-2" class="text-mars-400 w-6 h-6 flex-shrink-0"></i>
+                            <span>İnternet bağlantısı gerektirmez (Offline).</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-300">
+                            <i data-lucide="check-circle-2" class="text-mars-400 w-6 h-6 flex-shrink-0"></i>
+                            <span>Arka planda pil tüketimini optimize eder.</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-300">
+                            <i data-lucide="check-circle-2" class="text-mars-400 w-6 h-6 flex-shrink-0"></i>
+                            <span>Her yaşa uygun, şiddet içermeyen yapı.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA Section -->
+    <section id="indir" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="glass-card border-mars-500/30 p-12 rounded-[3rem] relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-mars-500/10 to-transparent"></div>
+                
+                <h2 class="font-display text-4xl font-bold mb-6 relative z-10">Koloniyi Kurmaya Hazır Mısın?</h2>
+                <p class="text-slate-300 mb-10 text-lg relative z-10">
+                    Sadece 5 MB boyutunda. Hemen indir, cihazında hiç yer kaplamadan Mars'ın hakimi ol.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+                    <button id="indirs" onclick="location.href='Koloni.apk'" class="bg-mars-500 hover:bg-mars-400 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:-translate-y-1 shadow-[0_10px_20px_rgba(255,87,34,0.3)] flex items-center justify-center gap-3">
+                        <i data-lucide="smartphone"></i>
+                        APK Olarak İndir (v1.0)
+                    </button>
+                </div>
+                <p class="mt-6 text-xs text-slate-500 relative z-10">
+                    Gereksinimler: Android 6.0 ve üzeri cihazlar.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full mars-planet"></div>
+                <span class="font-display font-bold text-lg tracking-tight">KOLONİ<span class="text-mars-500">.</span></span>
+            </div>
+            
+            <p class="text-slate-500 text-sm">
+                &copy; 2026 Tüm Hakları Saklıdır. Mars Koloni Simülatörü bir hobi projesidir.
+            </p>
+            
+            <div class="flex gap-4 text-slate-500">
+                <a href="#" class="hover:text-mars-400 transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-mars-400 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+
+
+    <script>
+        lucide.createIcons();
+
+        // Simple Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('bg-space-900/80', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                nav.classList.remove('bg-space-900/80', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+       
+    </script>
+</body>
+</html>
